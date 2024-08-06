@@ -1,0 +1,27 @@
+﻿@model Employee
+
+<form asp-action="Edit" method="post">
+    <input asp-for="Id" hidden/>
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+
+    <label asp-for="Age" class="form-label"></label>
+    <input asp-for="Age" class="form-control" />
+
+    <label asp-for="City" class="form-label"></label>
+    <input asp-for="City" class="form-control" />
+
+    <label asp-for="State" class="form-label"></label>
+    <input asp-for="State" class="form-control" />
+
+    <label asp-for="Salary" class="form-label"></label>
+    <input asp-for="Salary" class="form-control" />
+
+    <button type="submit" class="btn btn-outline-secondary mt-2">Edit</button>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

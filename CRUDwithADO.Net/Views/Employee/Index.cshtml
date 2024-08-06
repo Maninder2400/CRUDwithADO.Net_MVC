@@ -1,0 +1,50 @@
+﻿@model List<Employee>
+
+@if(TempData["InsertMsg"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@TempData["InsertMsg"]</strong>  !!!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["DeletionUnsuccess"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@TempData["DeletionUnsuccess"]</strong>  !!!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<div class="row justify-content-end">
+    <div class="col-4 text-end">
+        <a class="btn btn-outline-primary mb-2" asp-action="Create">Create New Employee</a>
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Salary</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Employee employee in Model)
+        {
+            <tr>
+                <td>@employee.Name</td>
+                <td>@employee.Age</td>
+                <td>@employee.City</td>
+                <td>@employee.State</td>
+                <td>@employee.Salary</td>
+                <td> <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+                    <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
